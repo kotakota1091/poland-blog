@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ポーランド留学 – 限定公開</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+<header class="site-header">
+  <div class="brand container">
+    <div class="flag"><div></div><div></div></div>
+    <h1 class="site-title">ポーランド留学</h1>
+  </div>
+  <nav class="container">
+    <a href="index.html">ホーム</a>
+    <a href="protected.html">限定公開</a>
+    <a href="article-hello.html">記事サンプル</a>
+  </nav>
+</header>
+
+  <main class="container">
+    <h1>限定公開ページ</h1>
+    <div id="password-gate" class="protected-box" data-hash="c880dd966759d01e8c2504d41401436e68b87eb58d2ddf7d15edb587d749c562">
+      <p>閲覧にはパスワードが必要です。</p>
+      <div class="input-row">
+        <input id="pw-input" type="password" placeholder="パスワードを入力" autocomplete="current-password">
+        <button id="pw-button" type="button">開く</button>
+      </div>
+      <div id="pw-msg" class="notice"></div>
+      <p class="notice">※ 簡易的な仕組みです。公開サーバーでは高度なセキュリティは提供しません。</p>
+    </div>
+    <section id="protected-content" style="display:none">
+      <h2>プライベート写真アルバム（サンプル）</h2>
+      <p>ここに家族や友人限定で見せたい内容を置けます（写真・動画・メモなど）。</p>
+      <ul>
+        <li>2025/09/15 ワルシャワ旧市街のスナップ</li>
+        <li>2025/09/20 授業初日の様子</li>
+      </ul>
+      <p><a href="index.html">← ホームへ戻る</a></p>
+    </section>
+  </main>
+  
+<footer class="container">
+  © 2025 Kotaro. Powered by static HTML/CSS/JS.
+</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

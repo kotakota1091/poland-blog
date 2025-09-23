@@ -1,0 +1,37 @@
+
+:root {
+  --accent: #dc143c;
+  --bg: #ffffff;
+  --text: #222;
+  --muted: #666;
+  --card: #fafafa;
+  --border: #eee;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, Segoe UI, Roboto, Noto Sans JP, Arial, sans-serif; line-height: 1.6; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.container { max-width: 860px; margin: 0 auto; padding: 24px; }
+header.site-header { border-bottom: 4px solid var(--accent); background: var(--bg); position: sticky; top: 0; z-index: 5; }
+.brand { display: flex; align-items: center; gap: 12px; padding: 16px 24px; }
+.flag { display: inline-grid; grid-template-rows: 1fr 1fr; width: 28px; height: 20px; border: 1px solid var(--border); }
+.flag > div:nth-child(1) { background: #fff; }
+.flag > div:nth-child(2) { background: var(--accent); }
+h1.site-title { margin: 0; font-size: 20px; }
+nav a { margin-right: 16px; font-weight: 600; }
+main { padding: 24px; }
+.hero { background: linear-gradient(0deg, rgba(220,20,60,0.06), rgba(255,255,255,1)); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+.posts { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 16px; }
+.post-card { border: 1px solid var(--border); border-radius: 12px; padding: 16px; background: var(--card); }
+.post-card h3 { margin: 0 0 8px; }
+.meta { color: var(--muted); font-size: 14px; }
+footer { border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; padding: 24px; }
+.article h1 { margin-top: 0; }
+.protected-box { border: 1px dashed var(--accent); padding: 16px; border-radius: 12px; background: #fff; }
+.input-row { display: flex; gap: 8px; margin-top: 8px; }
+input[type="password"] { flex: 1; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 16px; }
+button { padding: 10px 14px; border: 0; border-radius: 8px; background: var(--accent); color: #fff; font-weight: 700; cursor: pointer; }
+button:disabled { opacity: .6; cursor: not-allowed; }
+.notice { font-size: 13px; color: var(--muted); margin-top: 8px; }
+blockquote { border-left: 4px solid var(--accent); margin: 16px 0; padding: 8px 16px; background: #fff; }
+code, pre { background: #f5f5f5; padding: 2px 6px; border-radius: 6px; }
