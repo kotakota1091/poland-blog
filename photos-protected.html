@@ -1,4 +1,4 @@
-<!doctype html>
+ <!doctype html>
 <html lang="ja">
 <head>
   <meta charset="utf-8">
@@ -33,7 +33,7 @@
     <div id="password-gate" class="protected-box" data-hash="c880dd966759d01e8c2504d41401436e68b87eb58d2ddf7d15edb587d749c562">
       <p>閲覧にはパスワードが必要です。</p>
       <div class="input-row">
-        <input id="pw-input" type="password" placeholder="パスワードを入力">
+        <input id="pw-input" type="password" placeholder="パスワードを入力" autocomplete="current-password">
         <button id="pw-button" type="button">開く</button>
       </div>
       <div id="pw-msg" class="notice"></div>
@@ -45,13 +45,65 @@
       <div class="photo-grid" id="grid"></div>
 
       <script>
-        // ▼▼ ここに “画像URL” を1行ずつ貼るだけ！（例の user-attachments のURL）
+        // ▼▼ ここは触らなくてOK（あなたのURLを入れておいたよ）
         const urls = [
-          // 例:
-          // "https://github.com/user-attachments/assets/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-          // "https://github.com/user-attachments/assets/yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy",
+"https://github.com/user-attachments/assets/54fadb0a-4200-4a81-b1c9-3d7712b570e8",
+"https://github.com/user-attachments/assets/b1788d94-81c6-43e0-904e-b03b31b9cee9",
+"https://github.com/user-attachments/assets/ea8585b0-4c50-41b1-bcd9-29a6bda4b785",
+"https://github.com/user-attachments/assets/bd5a9528-ffdb-41b4-a6e8-52887909191c",
+"https://github.com/user-attachments/assets/3e719895-e27d-44d0-946c-fdbe4fa841b5",
+"https://github.com/user-attachments/assets/e2c33690-3080-48b9-a964-ab95467a0ed8",
+"https://github.com/user-attachments/assets/24e4bc9a-8890-4966-8b1d-1f3fdc7541ad",
+"https://github.com/user-attachments/assets/abeab51d-f0b3-4ae2-accc-ca0c36106ca7",
+"https://github.com/user-attachments/assets/20a38893-22cc-4ed6-a15f-40ab7b77ebe8",
+"https://github.com/user-attachments/assets/52610ea5-c226-4a03-9db6-ab0a4fa4e950",
+"https://github.com/user-attachments/assets/d862e13c-8a48-4538-9e7f-9b5ae03d274d",
+"https://github.com/user-attachments/assets/1a196aed-1a63-4e01-947a-4d84df7d81e2",
+"https://github.com/user-attachments/assets/9bfc1ed3-be55-499b-80b9-b97267825480",
+"https://github.com/user-attachments/assets/15cd0b52-5db3-43e4-b587-dd8071df4e22",
+"https://github.com/user-attachments/assets/fd5ba351-0f1f-4e5f-bba5-e97dadb16a24",
+"https://github.com/user-attachments/assets/a567d1f0-1f9d-47d0-9f93-b4a6c3b5c546",
+"https://github.com/user-attachments/assets/cfe3f418-bf5f-4af4-b95a-931e42112c43",
+"https://github.com/user-attachments/assets/3a17b487-2a29-48e2-9058-ae943314db4d",
+"https://github.com/user-attachments/assets/3168e586-733a-4659-9fc3-d842c8d010f0",
+"https://github.com/user-attachments/assets/0fdd85a4-732f-489e-a350-623839edd815",
+"https://github.com/user-attachments/assets/645fb8ad-a2c7-47dc-977e-2208d1c24a7a",
+"https://github.com/user-attachments/assets/bf448c28-d51b-430f-b629-37ea06b9068d",
+"https://github.com/user-attachments/assets/5c34b058-987d-47fa-abb7-5f1a221b7b86",
+"https://github.com/user-attachments/assets/afc2c759-7e4e-4945-b9ae-4304a2910e8c",
+"https://github.com/user-attachments/assets/4eee781d-62c8-4f7e-9c6e-491a965eb856",
+"https://github.com/user-attachments/assets/d878fa9e-36ed-4405-bb12-6e5b18f5888b",
+"https://github.com/user-attachments/assets/97b63a7b-8fe3-4161-b7da-38db83d73c21",
+"https://github.com/user-attachments/assets/2cc014b7-e884-4ff3-b722-d4cee282d69d",
+"https://github.com/user-attachments/assets/233bd792-b875-4ae1-b387-face0166195f",
+"https://github.com/user-attachments/assets/4bbffdad-2634-41fd-9e70-1a8a88586428",
+"https://github.com/user-attachments/assets/d302776e-a8cb-4458-8edf-541df3b59e9e",
+"https://github.com/user-attachments/assets/fb795e5c-c972-4d90-9129-9c5629113a13",
+"https://github.com/user-attachments/assets/05758efb-96d6-46ab-ab83-789f7c8c5fa1",
+"https://github.com/user-attachments/assets/7eef8fe6-f347-434d-8bec-479c305bfebe",
+"https://github.com/user-attachments/assets/15ad93d6-4c85-4df0-8ddf-6f15df04be42",
+"https://github.com/user-attachments/assets/b71a4868-b802-48b3-8559-ed6897be8749",
+"https://github.com/user-attachments/assets/3db8bf08-7536-4e81-b745-674006fb0a79",
+"https://github.com/user-attachments/assets/2cfd4aa4-6bc3-4da0-b162-3b55b210242e",
+"https://github.com/user-attachments/assets/8ca27549-3543-4086-a871-8315e4e23964",
+"https://github.com/user-attachments/assets/3faba472-d682-4116-b208-cc5ba5394c4b",
+"https://github.com/user-attachments/assets/8b13b0a9-d9be-4cb1-8fca-e4395fa3b25a",
+"https://github.com/user-attachments/assets/dc52f89a-a89f-4003-b9a1-5017cbf1c2b0",
+"https://github.com/user-attachments/assets/c9164c34-bf8e-4efb-ba46-5750d7926ed3",
+"https://github.com/user-attachments/assets/bfccd8ba-45a3-43ce-95ee-10c487e8928a",
+"https://github.com/user-attachments/assets/6ab47891-1e77-4238-835b-474d550f7f32",
+"https://github.com/user-attachments/assets/e488058b-ff41-40c1-913b-bdeec1547d3d",
+"https://github.com/user-attachments/assets/544136ae-38cc-40c1-9963-8eded14409df",
+"https://github.com/user-attachments/assets/e3ec69f5-1b8f-4afe-9a62-774321aa6d60",
+"https://github.com/user-attachments/assets/28b88052-36c3-477b-8e22-1f7048d464ad",
+"https://github.com/user-attachments/assets/cfa9794f-b214-488a-9295-2004315b784a",
+"https://github.com/user-attachments/assets/9b33593d-b104-45a8-a182-f90c8829dd20",
+"https://github.com/user-attachments/assets/19afaec0-486c-44b7-b38b-9a67b2677431",
+"https://github.com/user-attachments/assets/6ef3d91d-7351-41e7-b813-4e674d22c8a8",
+"https://github.com/user-attachments/assets/e0dccfbc-c163-425b-a32e-864fbdb9574c",
+"https://github.com/user-attachments/assets/58d1c3ad-72b0-447a-a215-813ac5844d50",
         ];
-        // ▲▲ ここだけ触ればOK
+        // ▲▲ ここまで
 
         // 自動でグリッドに追加（クリックで原寸を別タブ）
         const grid = document.getElementById('grid');
