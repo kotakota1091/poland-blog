@@ -3,10 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>写真ギャラリー（限定）</title>
+  <title>写真ギャラリー（限定公開）</title>
   <link rel="stylesheet" href="style.css">
-  <!-- 検索避けたいなら有効化 -->
-  <!-- <meta name="robots" content="noindex"> -->
+  <meta name="robots" content="noindex"><!-- 検索避け -->
 </head>
 <body>
   <header class="site-header">
@@ -16,14 +15,15 @@
     </div>
     <nav class="container">
       <a href="index.html">ホーム</a>
-      <a href="protected.html">限定公開</a>
+      <a href="protected.html">日記（限定公開）</a>
+      <a href="photos-protected.html">写真（限定公開）</a>
     </nav>
   </header>
 
   <main class="container">
-    <h1>写真ギャラリー（限定公開）</h1>
+    <h1>写真（限定公開）</h1>
 
-    <!-- ロック（パス: 20040605 のハッシュ） -->
+    <!-- パスワードロック（パス: 20040605 のハッシュ） -->
     <div id="password-gate" class="protected-box" data-hash="c880dd966759d01e8c2504d41401436e68b87eb58d2ddf7d15edb587d749c562">
       <p>閲覧にはパスワードが必要です。</p>
       <div class="input-row">
@@ -35,25 +35,22 @@
     </div>
 
     <section id="protected-content" style="display:none">
-      <!-- ギャラリー -->
-      <div class="gallery-grid">
-        <!-- 画像を増やすときは <figure> をコピペ -->
-        <figure>
-          <a href="images/001.jpg" target="_blank">
-            <img src="images/001.jpg" alt="ワルシャワ旧市街" loading="lazy">
-          </a>
-          <figcaption>ワルシャワ旧市街</figcaption>
-        </figure>
-        <figure>
-          <a href="images/002.jpg" target="_blank">
-            <img src="images/002.jpg" alt="大学の講堂" loading="lazy">
-          </a>
-          <figcaption>大学の講堂</figcaption>
-        </figure>
-        <!-- ここに追加していく -->
+      <!-- ここに写真だけ並べる（クリックで拡大版） -->
+      <div class="photo-grid">
+        <!-- 写真を増やす時は <a>…</a> をコピペ -->
+        <a href="images/warszawa.jpg" target="_blank">
+          <img src="images/warszawa.jpg" alt="" loading="lazy">
+        </a>
+        <a href="images/002.jpg" target="_blank">
+          <img src="images/002.jpg" alt="" loading="lazy">
+        </a>
+        <a href="images/003.jpg" target="_blank">
+          <img src="images/003.jpg" alt="" loading="lazy">
+        </a>
+        <!-- ↑ 追加したいだけ追加してOK -->
       </div>
 
-      <p style="margin-top:16px;"><a href="protected.html">← 限定ページへ戻る</a></p>
+      <p><a href="protected.html">← 限定ページへ戻る</a></p>
     </section>
   </main>
 
