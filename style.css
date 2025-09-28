@@ -35,3 +35,123 @@ button:disabled { opacity: .6; cursor: not-allowed; }
 .notice { font-size: 13px; color: var(--muted); margin-top: 8px; }
 blockquote { border-left: 4px solid var(--accent); margin: 16px 0; padding: 8px 16px; background: #fff; }
 code, pre { background: #f5f5f5; padding: 2px 6px; border-radius: 6px; }
+/* ===== THEME: EN Newspaper (pop & sober) ===== */
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=Archivo+Narrow:wght@600;700&family=Noto+Serif+JP:wght@400;600;700&display=swap');
+
+.theme-news{
+  --bg:#f8f7f3;          /* 新聞の紙色 */
+  --fg:#161616;          /* インク色 */
+  --muted:#6b7280;       /* 説明文 */
+  --accent:#c4161c;      /* 深い赤 */
+  --border:#e6e2d9;      /* 紙面の罫線 */
+  --card:#ffffff;
+  --shadow:0 6px 18px rgba(0,0,0,.06);
+  --radius:12px;
+  --container:1100px;
+}
+
+.theme-news body{ background:var(--bg); color:var(--fg); }
+.theme-news .container{ max-width:var(--container); padding:0 16px; }
+
+/* Masthead（新聞の題字） */
+.theme-news .site-header{
+  position:sticky; top:0; z-index:50;
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--border);
+}
+.theme-news .brand{ display:flex; align-items:end; gap:14px; padding:14px 0 10px; }
+.theme-news .site-title{
+  margin:0; letter-spacing:.02em; line-height:1;
+  font-family:"Archivo Narrow","Archivo","Noto Serif JP",serif;
+  font-size: clamp(28px,4vw,40px);
+  font-weight:800;
+}
+.theme-news .mast-date{
+  font: 600 12px/1 "Archivo","Noto Serif JP",serif;
+  letter-spacing:.12em; text-transform:uppercase; color:var(--muted);
+}
+
+/* セクションタブ（ナビ） */
+.theme-news nav.container{ display:flex; gap:10px; padding:8px 0 14px; flex-wrap:wrap; }
+.theme-news nav a{
+  font: 600 13px/1 "Archivo","Noto Serif JP",serif;
+  letter-spacing:.08em; text-transform:uppercase;
+  color:var(--fg); text-decoration:none;
+  border:1px solid var(--border); background:var(--card);
+  border-radius:999px; padding:8px 12px;
+}
+.theme-news nav a:hover{ border-color:var(--accent); }
+
+/* ヒーロー＝一面トップ見出し */
+.theme-news .hero{ border:1px solid var(--border); background:#fff; border-radius:var(--radius); box-shadow:var(--shadow); }
+.theme-news .hero-inner{ padding:26px 20px; }
+.theme-news .kicker{
+  color:var(--accent); font:700 12px/1 "Archivo","Noto Serif JP",serif;
+  letter-spacing:.16em; text-transform:uppercase; margin:0 0 6px;
+}
+.theme-news .hero h1{
+  margin:0 0 4px;
+  font-family:"Archivo Narrow","Archivo","Noto Serif JP",serif;
+  font-weight:700;
+  letter-spacing:-.01em;
+  font-size: clamp(24px,3.2vw,36px);
+}
+.theme-news .deck{ color:var(--muted); margin:0; }
+
+/* 紙面グリッド */
+.theme-news .grid{ display:grid; gap:16px; grid-template-columns: 2fr 1fr; align-items:start; }
+.theme-news .card{
+  background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
+  padding:16px; box-shadow:var(--shadow);
+  text-decoration:none; color:inherit;
+}
+.theme-news .card:hover{ box-shadow:0 10px 28px rgba(0,0,0,.08); }
+.theme-news .card h3,.theme-news .card h4{
+  margin:6px 0 6px;
+  font-family:"Archivo Narrow","Archivo","Noto Serif JP",serif;
+  letter-spacing:-.01em;
+}
+.theme-news .rule{ height:2px; background:linear-gradient(90deg,var(--fg),transparent); opacity:.15; margin:8px 0 10px; }
+
+/* ボタン（CTA） */
+.theme-news .btn{
+  display:inline-block; padding:10px 14px; border-radius:8px;
+  border:1px solid var(--border); background:var(--card);
+  color:var(--fg); font:700 13px/1 "Archivo","Noto Serif JP",serif; letter-spacing:.04em;
+  text-decoration:none;
+}
+.theme-news .btn.primary{ background:var(--accent); color:#fff; border-color:transparent; }
+.theme-news .btn.primary:hover{ opacity:.95; }
+
+/* 記事本文（新聞っぽい余白と両端揃え、広い画面は2段） */
+.theme-news .diary-entry{
+  font-family:"Noto Serif JP",serif; line-height:1.9; font-size:17px;
+}
+.theme-news .diary-entry p{ margin:12px 0; text-align:justify; text-justify:inter-ideograph; }
+@media (min-width: 960px){
+  .theme-news .diary-entry{ column-count: 2; column-gap: 32px; }
+  .theme-news .diary-entry p{ break-inside: avoid; }
+}
+
+/* ドロップキャップ */
+.theme-news .diary-entry p:first-of-type::first-letter{
+  float:left; font-family:"Archivo Narrow","Archivo"; font-weight:800;
+  font-size:3.2em; line-height:.8; padding:.06em .12em 0 .02em; color:var(--accent);
+}
+
+/* プルクオート（目立つ引用） */
+.theme-news blockquote.pull{
+  margin: 14px 0; padding: 10px 14px; background:#fff;
+  border-left:4px solid var(--accent);
+  font: 700 16px/1.6 "Archivo","Noto Serif JP",serif; color:#111;
+}
+
+/* 写真グリッド（既存ギャラリー流用） */
+.theme-news .photo-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:8px; }
+.theme-news .photo-grid a{ display:block; border-radius:10px; overflow:hidden; }
+.theme-news .photo-grid img{ width:100%; height:180px; object-fit:cover; display:block; transition:transform .18s; }
+.theme-news .photo-grid a:hover img{ transform:scale(1.04); }
+
+/* 細部 */
+.theme-news footer.container{ color:var(--muted); font-size:13px; padding:36px 0; }
