@@ -155,3 +155,21 @@ code, pre { background: #f5f5f5; padding: 2px 6px; border-radius: 6px; }
 
 /* 細部 */
 .theme-news footer.container{ color:var(--muted); font-size:13px; padding:36px 0; }
+/* === Diary list (newspaper tidy) === */
+.theme-news .diary-list{
+  list-style:none; margin:12px 0; padding:0;
+}
+.theme-news .diary-list li{ margin:6px 0; }
+.theme-news .diary-list a{
+  position:relative; display:inline-block;
+  padding:6px 10px 6px 28px;
+  text-decoration:none; color:var(--fg);
+  /* 数字は等幅、英字は細身。日本語は自動でNoto Serif JPにフォールバック */
+  font-family: Inter, "Noto Serif JP", serif;
+  font-variant-numeric: tabular-nums;      /* ← これで 09 と 9 が同じ幅に */
+  border-bottom:1px dashed color-mix(in srgb, var(--fg) 30%, transparent);
+}
+.theme-news .diary-list a::before{
+  content:"•"; position:absolute; left:8px; top:0; line-height:1.8; color:var(--accent);
+}
+.theme-news .diary-list a:hover{ color:var(--accent); border-color:var(--accent); }
