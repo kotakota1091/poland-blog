@@ -56,19 +56,25 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 // --- ここまでが元からある script.js のコード ---
-
-
-// ====== 日付を英字新聞風に変換する処理 ======
+// === Convert "YYYY/MM/DD(…の日記)" -> "SEPT 28, 2025" ===
 document.addEventListener("DOMContentLoaded", () => {
-  const dateEls = document.querySelectorAll("h2, a"); 
-  dateEls.forEach(el => {
-    const text = el.textContent.trim();
-    const match = text.match(/^(\d{4})\/(\d{2})\/(\d{2})$/);
-    if (match) {
-      const [_, y, m, d] = match;
-      const date = new Date(`${y}-${m}-${d}`);
-      const options = { month: "short", day: "numeric", year: "numeric" };
-      el.textContent = date.toLocaleDateString("en-US", options).toUpperCase();
-    }
-  });
+  const months = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEPT","OCT","NOV","DEC"];
+  // 例: 2025/9/7, 2025-09-07, 2025/09/07の日記 すべてマッチ
+  const re = /(\d{4})[/-](\d{1,2})[/-](\d{1,2})(?:\s*の日記)?/;
+
+  const convert = (node) => {
+    const t = (node.textContent || "").trim();
+    const m = t.match(re);
+    if (!m) return;
+    const y = m[1], mo = parseInt(m[2],10), d = parseInt(m[3],10);
+    node.textContent = `${months[mo-1]} ${d}, ${y}`;
+  };
+
+  // 本文の見出し（各日記ページ）
+  document.querySelectorAll("main h2").forEach(convert);
+  // 一覧リンク（protected.html の月別リスト）
+  document.querySelectorAll(".diary-list a").forEach(convert);
 });
+
+
+
