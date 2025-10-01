@@ -199,3 +199,11 @@ code, pre { background: #f5f5f5; padding: 2px 6px; border-radius: 6px; }
   font-variant-numeric: tabular-nums; /* 数字幅を揃える */
 }
 .diary-list a:hover { color: var(--accent, #c4161c); }
+/* PUBLISHED 行の見た目（英字新聞風の小見出し） */
+.meta-date {
+  font-family: "Times New Roman", "Noto Serif JP", serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  color: #555;
+  text-transform: uppercase;
+}
