@@ -55,3 +55,20 @@ document.addEventListener('DOMContentLoaded', () => {
     input?.addEventListener('keydown', (e) => { if (e.key === 'Enter') tryUnlock(); });
   }
 });
+// --- ここまでが元からある script.js のコード ---
+
+
+// ====== 日付を英字新聞風に変換する処理 ======
+document.addEventListener("DOMContentLoaded", () => {
+  const dateEls = document.querySelectorAll("h2, a"); 
+  dateEls.forEach(el => {
+    const text = el.textContent.trim();
+    const match = text.match(/^(\d{4})\/(\d{2})\/(\d{2})$/);
+    if (match) {
+      const [_, y, m, d] = match;
+      const date = new Date(`${y}-${m}-${d}`);
+      const options = { month: "short", day: "numeric", year: "numeric" };
+      el.textContent = date.toLocaleDateString("en-US", options).toUpperCase();
+    }
+  });
+});
