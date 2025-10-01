@@ -75,6 +75,27 @@ document.addEventListener("DOMContentLoaded", () => {
   // 一覧リンク（protected.html の月別リスト）
   document.querySelectorAll(".diary-list a").forEach(convert);
 });
+// === "公開日: 2025-09-23" → "PUBLISHED: SEPT 23, 2025" に統一 ===
+document.addEventListener("DOMContentLoaded", () => {
+  const months = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEPT","OCT","NOV","DEC"];
+
+  // 例: 公開日: 2025-09-23 / 公開日：2025/9/23 などを許容
+  const reJP = /(公開日)\s*[:：]\s*(\d{4})[/-](\d{1,2})[/-](\d{1,2})/;
+
+  // テキストノードだけを持つ要素をざっと走査（小規模サイトなのでOK）
+  document.querySelectorAll("body *:not(script):not(style)").forEach(node => {
+    if (!node.firstChild || node.childNodes.length !== 1 || node.firstChild.nodeType !== 3) return;
+
+    const text = node.textContent.trim();
+    const m = text.match(reJP);
+    if (!m) return;
+
+    const [, /*label*/, y, mo, d] = m;
+    const mm = months[parseInt(mo, 10) - 1];
+    node.textContent = `PUBLISHED: ${mm} ${parseInt(d, 10)}, ${y}`;
+    node.classList.add("meta-date");
+  });
+});
 
 
 
